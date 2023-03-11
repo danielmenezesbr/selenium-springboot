@@ -18,8 +18,8 @@ public class MyCommands {
     private BuscaInvestimentoLoopPage buscaInvestimentoLoopPage;
 
 	@ShellMethod(key = "tudo")
-	public String tudo() {
-		autenticar("");
+	public String tudo(@ShellOption(defaultValue = "") String cpf) {
+		autenticar(cpf);
 		loopStart();
 		return "Ok?";
 	}
@@ -41,12 +41,6 @@ public class MyCommands {
 	@ShellMethod(key = "loop-abortar")
 	public String loopAbortar() {
 		buscaInvestimentoLoopPage.setAbortarLoop(true);
-		return "Ok";
-	}
-
-	@ShellMethod(key = "teste")
-	public String teste() {
-		buscaInvestimentoLoopPage.test();
-		return "Ok";
+		return "Solicita";
 	}
 }

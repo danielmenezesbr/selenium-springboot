@@ -21,7 +21,7 @@ public class AuthPage extends BasePage {
 
     //********* Web Elements by using By Class *********
     By btnProximo = By.id("ctl00_cphLogin_btnPesquisaUsuarioPorCpf");
-    By cpf = By.id("ctl00_cphLogin_txtCpfParaPesquisa");
+    By inputCpf = By.id("ctl00_cphLogin_txtCpfParaPesquisa");
     By resumoConta = By.id("ctl00_cphPrincipal_Resumo_ddlConta");
     By btnFiltro = By.xpath("//*[contains(text(), 'Aplicar Filtros')]");
     By btnFiltroDaycoval = By.xpath("//span[contains(@class, 'mdc-evolution-chip__text-label') and contains(text(), 'Daycoval')]");
@@ -33,11 +33,11 @@ public class AuthPage extends BasePage {
         driver.get("https://ecode.daycoval.com.br");
 
         var w = new WebDriverWait(driver, Duration.ofSeconds(240));
-        w.until(ExpectedConditions.visibilityOfElementLocated(this.cpf));
-        jsClick(this.cpf);
+        w.until(ExpectedConditions.visibilityOfElementLocated(this.inputCpf));
+        jsClick(this.inputCpf);
 
         if (StringUtils.hasLength(cpf)) {
-            writeText(this.cpf, cpf);
+            writeText(this.inputCpf, cpf);
             jsClick(btnProximo);
         } else {
             log.info("Informe CPF na tela");

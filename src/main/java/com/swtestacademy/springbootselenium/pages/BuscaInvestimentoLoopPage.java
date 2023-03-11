@@ -27,24 +27,15 @@ public class BuscaInvestimentoLoopPage extends BasePage {
 
     //********* Web Elements by using By Class *********
     By btnProximo = By.id("ctl00_cphLogin_btnPesquisaUsuarioPorCpf");
-    By cpf = By.id("ctl00_cphLogin_txtCpfParaPesquisa");
+    By inputCpf = By.id("ctl00_cphLogin_txtCpfParaPesquisa");
     By resumoConta = By.id("ctl00_cphPrincipal_Resumo_ddlConta");
     By btnFiltro = By.xpath("//*[contains(text(), 'Aplicar Filtros')]");
     By btnFiltroDaycoval = By.xpath("//span[contains(@class, 'mdc-evolution-chip__text-label') and contains(text(), 'Daycoval')]");
     By btnFiltroIsento = By.xpath("//span[contains(@class, 'mdc-evolution-chip__text-label') and contains(text(), 'Isento')]");
     By tabLCILCA = By.xpath("//a[contains(@data-bs-target, '#tab-LCILCA')]");
 
-    //*********Page Methods*********
-
     @Async
-    @Retryable(value = TimeoutException.class)
-    public void test() {
-        log.info("test - inicio");
-        throw new org.openqa.selenium.TimeoutException();
-    }
-
-    @Async
-    @Retryable(value = RuntimeException.class)
+    @Retryable(value = RuntimeException.class, maxAttempts = 100)
     public void loopStart() {
         log.info("loopStart - inicio");
         var w = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -67,8 +58,9 @@ public class BuscaInvestimentoLoopPage extends BasePage {
 
         boolean encontrouOuSolitacaoParaAbortar = false;
         do {
-            jsClick(btnFiltro);
             w.until(ExpectedConditions.visibilityOfElementLocated(btnFiltro));
+            w.until(ExpectedConditions.elementToBeClickable(btnFiltro));
+            jsClick(btnFiltro);
             var elements = driver.findElements(btnInvestir);
             if (elements.size() != 0) {
                 encontrouOuSolitacaoParaAbortar = true;

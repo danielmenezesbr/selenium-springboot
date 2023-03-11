@@ -1,5 +1,3 @@
- [ ] beep local: System.out.println("\007") loop
- [ ] rodar localmente
- [ ] remover cpf
- [ ] separa login de loop
- [ ] loop deveria ser executado em uma thread separada?
+ [ ] beep local: System.out.println("\007") loopAbortar
+ [ ] preencher dados do investimento (valor a investir)
+ [ ] clicar em investir e dizer que falta confirmacao da senha de realizacao de transação
