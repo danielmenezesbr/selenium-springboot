@@ -6,17 +6,21 @@ import com.swtestacademy.springbootselenium.annotations.LazyComponent;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class BuscaInvestimentoLoopPage extends BasePage {
 
     @Getter @Setter boolean abortarLoop = false;
@@ -31,10 +35,18 @@ public class BuscaInvestimentoLoopPage extends BasePage {
     By tabLCILCA = By.xpath("//a[contains(@data-bs-target, '#tab-LCILCA')]");
 
     //*********Page Methods*********
-    @Async
-    public void loopStart() {
-        this.abortarLoop = false;
 
+    @Async
+    @Retryable(value = TimeoutException.class)
+    public void test() {
+        log.info("test - inicio");
+        throw new org.openqa.selenium.TimeoutException();
+    }
+
+    @Async
+    @Retryable(value = RuntimeException.class)
+    public void loopStart() {
+        log.info("loopStart - inicio");
         var w = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.get("https://ecode.daycoval.com.br/ng/Investimento/#/RendaFixa/Aplicar");
 
@@ -64,7 +76,9 @@ public class BuscaInvestimentoLoopPage extends BasePage {
             }
             if (this.abortarLoop) {
                 encontrouOuSolitacaoParaAbortar = true;
+                this.abortarLoop = false;
             }
         } while(!encontrouOuSolitacaoParaAbortar);
+        log.info("loopStart - fim");
     }
 }

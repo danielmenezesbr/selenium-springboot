@@ -3,6 +3,9 @@ package com.swtestacademy.springbootselenium.pages;
 import java.time.Duration;
 
 import com.swtestacademy.springbootselenium.annotations.LazyComponent;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +13,10 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
+@Slf4j
 public class AuthPage extends BasePage {
 
     //********* Web Elements by using By Class *********
@@ -26,12 +31,21 @@ public class AuthPage extends BasePage {
     //*********Page Methods*********
     public AuthPage login(String cpf) {
         driver.get("https://ecode.daycoval.com.br");
-        writeText(this.cpf, cpf);
-        jsClick(btnProximo);
-
-        System.out.println(">>> faça: (1) digite a senha numerica e (2) token em até 240s");
 
         var w = new WebDriverWait(driver, Duration.ofSeconds(240));
+        w.until(ExpectedConditions.visibilityOfElementLocated(this.cpf));
+        jsClick(this.cpf);
+
+        if (StringUtils.hasLength(cpf)) {
+            writeText(this.cpf, cpf);
+            jsClick(btnProximo);
+        } else {
+            log.info("Informe CPF na tela");
+        }
+        
+        System.out.println(">>> faça: (1) digite a senha numerica e (2) token em até 240s");
+
+        
         w.until(ExpectedConditions.presenceOfElementLocated(resumoConta));
         System.out.println("Autenticação OK");
 

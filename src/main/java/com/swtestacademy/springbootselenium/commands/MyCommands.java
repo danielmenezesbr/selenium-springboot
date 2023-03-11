@@ -17,11 +17,11 @@ public class MyCommands {
 	@LazyAutowired
     private BuscaInvestimentoLoopPage buscaInvestimentoLoopPage;
 
-	@ShellMethod(key = "hello-world")
-	public String helloWorld(
-		@ShellOption(defaultValue = "spring") String arg
-	) {
-		return "Hello world " + arg;
+	@ShellMethod(key = "tudo")
+	public String tudo() {
+		autenticar("");
+		loopStart();
+		return "Ok?";
 	}
 
 	@ShellMethod(key = "autenticar")
@@ -41,6 +41,12 @@ public class MyCommands {
 	@ShellMethod(key = "loop-abortar")
 	public String loopAbortar() {
 		buscaInvestimentoLoopPage.setAbortarLoop(true);
+		return "Ok";
+	}
+
+	@ShellMethod(key = "teste")
+	public String teste() {
+		buscaInvestimentoLoopPage.test();
 		return "Ok";
 	}
 }
