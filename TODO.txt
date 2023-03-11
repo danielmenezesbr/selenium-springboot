@@ -1,0 +1,5 @@
+ [ ] beep local: System.out.println("\007") loop
+ [ ] rodar localmente
+ [ ] remover cpf
+ [ ] separa login de loop
+ [ ] loop deveria ser executado em uma thread separada?

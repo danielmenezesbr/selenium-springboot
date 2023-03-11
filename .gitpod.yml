@@ -1,6 +1,6 @@
 image: gitpod/workspace-full-vnc
 tasks:
-  - before: sdk install java 17.0.4.1-tem
+  - before: sdk install java 17.0.6-tem < /dev/null
   - init: mvn install -DskipTests=false
 
 ports:
@@ -8,8 +8,16 @@ ports:
   - port: 5900
     onOpen: ignore
 # VNC (web view)
-# This is the port you should be using to interact with Firefox. It is a bit
-# annoying to have it open at every workspace startup, though, so it is now
-# ignored.
   - port: 6080
     onOpen: ignore
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
+    - redhat.java
+    - vscjava.vscode-java-debug
+    - vscjava.vscode-java-test
+    - vscjava.vscode-spring-boot-dashboard
+    - vscjava.vscode-java-dependency
+    - vscjava.vscode-maven
+    - pivotal.vscode-spring-boot

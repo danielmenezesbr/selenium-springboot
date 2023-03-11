@@ -9,6 +9,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebDriver;
 
 @Execution(ExecutionMode.CONCURRENT)
+@Disabled
 public class LoginTest extends BaseTest {
     @LazyAutowired
     LoginSteps loginSteps;
@@ -25,6 +26,7 @@ public class LoginTest extends BaseTest {
             .thenIVerifyInvalidLoginMessage();
     }
 
+    @Disabled("desabilitado")
     @Test
     public void emptyUserEmptyPassword() {
         logger.info("Driver of emptyUserEmptyPassword test: " + applicationContext

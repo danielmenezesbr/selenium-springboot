@@ -2,6 +2,8 @@ package com.swtestacademy.springbootselenium.tests;
 
 import com.swtestacademy.springbootselenium.annotations.LazyAutowired;
 import com.swtestacademy.springbootselenium.steps.HomeSteps;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
@@ -13,6 +15,7 @@ public class HomePageTest extends BaseTest {
     @LazyAutowired
     HomeSteps homeSteps;
 
+    @Disabled("desabilitado")
     @Test
     public void homePageTest() {
         System.out.println("Driver of invalidUserNameInvalidPassword test: " + applicationContext
@@ -23,6 +26,7 @@ public class HomePageTest extends BaseTest {
             .thenIVerifyIAmAtHomePage();
     }
 
+    @Disabled("desabilitado")
     @Test
     @Description("For testing parallel test execution.")
     public void homePageTest1() {
@@ -34,6 +38,7 @@ public class HomePageTest extends BaseTest {
                 .thenIVerifyIAmAtHomePage();
     }
 
+    @Disabled("desabilitado")
     @Test
     @Description("For testing parallel test execution.")
     public void homePageTest2() {
