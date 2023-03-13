@@ -72,6 +72,10 @@ public abstract class BasePage {
         javascriptExecutor.executeScript("arguments[0].click();", wait.until(ExpectedConditions.visibilityOfElementLocated(by)));
     }
 
+    public void jsClickWithoutWait(By by) {
+        javascriptExecutor.executeScript("arguments[0].click();");
+    }
+
     //Write Text by using JAVA Generics (You can use both By or WebElement)
     public <T> void writeText(T elementAttr, String text) {
         waitElement(elementAttr);

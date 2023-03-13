@@ -34,7 +34,7 @@ public class AuthPage extends BasePage {
 
         var w = new WebDriverWait(driver, Duration.ofSeconds(240));
         w.until(ExpectedConditions.visibilityOfElementLocated(this.inputCpf));
-        jsClick(this.inputCpf);
+        //jsClick(this.inputCpf);
 
         if (StringUtils.hasLength(cpf)) {
             writeText(this.inputCpf, cpf);
