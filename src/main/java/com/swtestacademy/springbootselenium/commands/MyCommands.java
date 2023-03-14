@@ -1,5 +1,7 @@
 package com.swtestacademy.springbootselenium.commands;
 
+import java.util.concurrent.CompletableFuture;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -36,13 +38,13 @@ public class MyCommands {
 	public String tudo() {
 		autenticar();
 		loopStart();
-		return "Ok?";
+		return "";
 	}
 
 	@ShellMethod(key = "autenticar")
 	public String autenticar() {
 		authPage.login(cpf);
-		return "Ok";
+		return "Login solicitado";
 	}
 
 	@ShellMethod(key = "loop-start")

@@ -1,17 +1,14 @@
 package com.swtestacademy.springbootselenium.pages;
 
 import java.time.Duration;
-
-import com.swtestacademy.springbootselenium.annotations.LazyComponent;
+import java.util.concurrent.CompletableFuture;
 
 import lombok.extern.slf4j.Slf4j;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -29,7 +26,7 @@ public class AuthPage extends BasePage {
     By tabLCILCA = By.xpath("//a[contains(@data-bs-target, '#tab-LCILCA')]");
 
     //*********Page Methods*********
-    public AuthPage login(String cpf) {
+    public void login(String cpf) {
         driver.get("https://ecode.daycoval.com.br");
 
         var w = new WebDriverWait(driver, Duration.ofSeconds(240));
@@ -48,7 +45,5 @@ public class AuthPage extends BasePage {
         
         w.until(ExpectedConditions.presenceOfElementLocated(resumoConta));
         System.out.println("Autenticação OK");
-
-        return this;
     }
 }
