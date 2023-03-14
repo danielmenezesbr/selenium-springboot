@@ -51,9 +51,9 @@ public class MyCommands {
 		return "Ok";
 	}
 
-	@ShellMethod(key = "loop-abortar")
-	public String loopAbortar() {
+	@ShellMethod(key = "loop-stop")
+	public String loopStop() {
 		buscaInvestimentoLoopPage.setAbortarLoop(true);
-		return "Solicita";
+		return "Solicitado stop do loop";
 	}
 }
