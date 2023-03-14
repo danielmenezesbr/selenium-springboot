@@ -62,7 +62,7 @@ public class BuscaInvestimentoLoopPage extends BasePage {
         //String xpathInvestir = String.format("//td[contains(@class, 'cdk-column-nomeProduto') and contains(text(), '%s')]/following::button[1]", textoNomeInvestimento);
         //log.info(String.format("$x(%s)", xpathInvestir));
         //By btnInvestir = By.xpath(xpathInvestir);
-        //By btnInvestir = By.xpath("//td[contains(@class, 'cdk-column-nomeProduto') and contains(text(), 'LF - DAYCOVAL PÓS')]/following::button[1]");
+        //By btnInvestir = By.xpath("//td[contains(@class, 'cdk-column-nomeProduto') and contains(text(), 'DAYCOVAL')]/following::button[1]");
         By btnInvestir = By.xpath("//td[contains(@class, 'cdk-column-nomeProduto') and contains(text(), '90 DIAS')]/following::button[1]");
 
         boolean encontrouOuSolitacaoParaAbortar = false;
@@ -80,14 +80,12 @@ public class BuscaInvestimentoLoopPage extends BasePage {
                 encontrouOuSolitacaoParaAbortar = true;
                 jsClick(btnInvestir);
 
-                // ****** em teste - inicio
-
                 w.until(ExpectedConditions.visibilityOfElementLocated(btnSolicitarInvestimento));
 
                 if ("0".equals(valorInvestimento)) {
                     // marca o saldo
-                    //jsClickWithoutWait(ckbSaldoDia);
-                    //TODO: arrumar!
+                    JavascriptExecutor js = (JavascriptExecutor) driver;                    
+                    js.executeScript("document.evaluate('//*[@id=\"ctl00_cphPrincipal_chkUsarSaldo\"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()");
                 } else {
                     //digita o valor do investimento
                     writeText(inputValorInvestimento, valorInvestimento);
