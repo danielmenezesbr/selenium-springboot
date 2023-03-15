@@ -1,2 +1,2 @@
 #!/bin/sh
-mvn clean spring-boot:run
+./mvnw clean spring-boot:run
