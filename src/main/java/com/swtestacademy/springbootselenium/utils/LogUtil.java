@@ -26,6 +26,6 @@ public class LogUtil {
             .stream()
             .anyMatch(logEntry -> logEntry
                 .getMessage()
-                .contains("An invalid email address was specified")));
+                .contains("An invalid email address was specified")), "ERROR IN LOG");
     }
 }

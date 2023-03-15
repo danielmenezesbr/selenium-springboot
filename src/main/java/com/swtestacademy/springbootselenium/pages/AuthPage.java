@@ -1,14 +1,11 @@
 package com.swtestacademy.springbootselenium.pages;
 
 import java.time.Duration;
-import java.util.concurrent.CompletableFuture;
-
 import lombok.extern.slf4j.Slf4j;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
