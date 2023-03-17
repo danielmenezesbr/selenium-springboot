@@ -1,8 +1,7 @@
 image: gitpod/workspace-full-vnc:2023-01-16-03-31-28
 tasks:
   - before: |
-       sudo apt-get -y install tigervnc-viewer
-       ./install_teamviewer.sh
+       ./install_remote_desktop_clients.sh
        sdk install java 17.0.6-tem < /dev/null
        ./app_start.sh
 
