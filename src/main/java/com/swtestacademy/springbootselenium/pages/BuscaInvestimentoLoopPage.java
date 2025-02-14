@@ -57,7 +57,7 @@ public class BuscaInvestimentoLoopPage extends BasePage {
         //log.info(String.format("$x(%s)", xpathInvestir));
         //By btnInvestir = By.xpath(xpathInvestir);
         //By btnInvestir = By.xpath("//td[contains(@class, 'cdk-column-nomeProduto') and contains(text(), 'DAYCOVAL')]/following::button[1]");
-        By btnInvestir = By.xpath("//td[contains(@class, 'cdk-column-nomeProduto') and contains(text(), '90 DIAS')]/following::button[1]");
+        By btnInvestir = By.xpath("//td[contains(@class, 'cdk-column-nomeProduto') and contains(text(), 'LCA')]/following::button[1]");
 
         boolean encontrouOuSolitacaoParaAbortar = false;
         do {
